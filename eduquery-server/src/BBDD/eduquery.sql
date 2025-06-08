@@ -37,7 +37,6 @@ CREATE TABLE `students` (
   `dir` text DEFAULT NULL,
   `telph` text NOT NULL,
   `birthdate` date NOT NULL,
-  `nia` int(11) DEFAULT NULL,
   `pwd` text NOT NULL,
   `photo` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

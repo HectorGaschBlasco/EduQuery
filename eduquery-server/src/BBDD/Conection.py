@@ -26,6 +26,11 @@ def bbdd(nombre_bbdd):
             user="root",
             password="",
         )
+        if connection.is_connected():
+            print("Conexión exitosa a MySQL Server")
+        else:
+            print("Error al conectar a MySQL Server")
+            return None
         cursor = connection.cursor()
 
         try:

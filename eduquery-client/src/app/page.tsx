@@ -114,6 +114,7 @@ const registerUser = (role: string, sign: string) => {
     });
     return;
   }
+  console.log(fullname.value);
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:8000/signup");
@@ -130,7 +131,7 @@ const registerUser = (role: string, sign: string) => {
     xhr.send(body);
     xhr.onload = () => {
       if (xhr.status == 200) {
-        console.log(xhr.response.message.value);
+        console.log(xhr.response.message);
 
         toast.success('Registred correctly', {position: "bottom-center",autoClose: 5000,hideProgressBar: false,
           closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "light",transition: Slide
@@ -174,6 +175,8 @@ const logUser = (role: string, sign: string) => {
     xhr.onload = () => {
       if (xhr.status == 200) {
         console.log(JSON.parse(xhr.responseText));
+
+        document.cookie = `dni=${dni.value}`;
 
         toast.success('Registred correctly, redirecting', {position: "bottom-center",autoClose: 5000,hideProgressBar: false,
           closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "light",transition: Slide, 
@@ -271,7 +274,7 @@ const logUser = (role: string, sign: string) => {
 
         {selectedSign == "up" && (
           <div className={`flex w-full max-w-md justify-center items-center gap-5 sm:gap-10 flex-col transition-opacity duration-700 ${showForm ? "opacity-100" : "opacity-0"}`}>
-            <h2 className="text-3xl font-semibold mb-4 text-sky-200">
+            <h2 className={`text-3xl font-semibold mb-4 text-sky-200 ${selectedSign ? "translate-y-[-25px] " : ""}`}>
                 {selectedRole === "teacher" ? "Professorate" : "Student"}
             </h2>
             <form className="w-full max-w-sm">
@@ -386,7 +389,7 @@ const logUser = (role: string, sign: string) => {
 
         {selectedSign == "in" && (
           <div className={`flex w-full max-w-md justify-center items-center gap-5 sm:gap-10 flex-col transition-opacity duration-700 ${showForm ? "opacity-100" : "opacity-0"}`}>
-            <h2 className="text-3xl font-semibold mb-4 text-sky-200">
+            <h2 className={`text-3xl font-semibold mb-4 text-sky-200 ${selectedSign ? "translate-y-[-25px] " : ""}`} >
                 {selectedRole === "teacher" ? "Professorate" : "Student"}
             </h2>
             <form className="w-full max-w-sm">
